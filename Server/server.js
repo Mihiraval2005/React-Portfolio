@@ -10,8 +10,12 @@ connectDB();
 const app = express();
 
 app.use(cors({
-    origin: 'https://mihir-5nlg.onrender.com', // React app
+  origin: [
+    'https://mihir-5nlg.onrender.com',
+    'https://portfolio-api-y0l7.onrender.com'
+  ],
 }));
+
 app.use(express.json());
 
 app.use("/api/contact", contactRoutes);

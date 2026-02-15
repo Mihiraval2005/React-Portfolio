@@ -149,42 +149,42 @@ export default function Contact() {
                 e.preventDefault();
                 setCallResult({ message: "Submitting...", type: "" });
 
-                const formData = {
-                  name: e.target.name.value,
-                  email: e.target.email.value,
-                  phone: e.target.phone.value,
-                  type: e.target.type.value,
-                  datetimeDescription: e.target.datetimeDescription.value,
-                };
+                // const formData = {
+                //   name: e.target.name.value,
+                //   email: e.target.email.value,
+                //   phone: e.target.phone.value,
+                //   type: e.target.type.value,
+                //   datetimeDescription: e.target.datetimeDescription.value,
+                // };
 
-                try {
-                  const res = await fetch(
-                    "http://localhost:5000/api/book-call",
-                    {
-                      method: "POST",
-                      headers: { "Content-Type": "application/json" },
-                      body: JSON.stringify(formData),
-                    }
-                  );
-                  const data = await res.json();
+                // try {
+                //   const res = await fetch(
+                //     "http://localhost:5000/api/book-call",
+                //     {
+                //       method: "POST",
+                //       headers: { "Content-Type": "application/json" },
+                //       body: JSON.stringify(formData),
+                //     }
+                //   );
+                //   const data = await res.json();
 
-                  if (res.ok) {
-                    setCallResult({ message: data.message, type: "success" });
-                    e.target.reset();
-                  } else {
-                    setCallResult({
-                      message: data.message || "Error!",
-                      type: "error",
-                    });
-                  }
+                //   if (res.ok) {
+                //     setCallResult({ message: data.message, type: "success" });
+                //     e.target.reset();
+                //   } else {
+                //     setCallResult({
+                //       message: data.message || "Error!",
+                //       type: "error",
+                //     });
+                //   }
 
-                  setTimeout(
-                    () => setCallResult({ message: "", type: "" }),
-                    5000
-                  );
-                } catch (err) {
-                  setCallResult({ message: "Server error", type: "error" });
-                }
+                //   setTimeout(
+                //     () => setCallResult({ message: "", type: "" }),
+                //     5000
+                //   );
+                // } catch (err) {
+                //   setCallResult({ message: "Server error", type: "error" });
+                // }
               }}
               className="space-y-4"
             >
