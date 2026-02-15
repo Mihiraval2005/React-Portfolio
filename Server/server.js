@@ -10,7 +10,7 @@ connectDB();
 const app = express();
 
 app.use(cors({
-    origin: 'http://localhost:5173', // React app
+    origin: 'https://mihir-5nlg.onrender.com', // React app
 }));
 app.use(express.json());
 
