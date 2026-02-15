@@ -2,6 +2,8 @@ import { useState } from "react";
 
 export default function Contact() {
   const [result, setResult] = useState({ message: "", type: "" }); // type: 'success' | 'error'
+  const [showModal, setShowModal] = useState(false);
+  const [callResult, setCallResult] = useState({ message: "", type: "" });
 
   const onSubmit = async (event) => {
     event.preventDefault();
@@ -110,7 +112,223 @@ export default function Contact() {
           <img src="./assets/right-arrow-white.png" alt="" className="w-4" />
         </button>
       </form>
-      
+      <div
+        className="mt-10 max-w-2xl mx-auto border border-gray-300 dark:border-white/20 p-6 rounded-xl text-center cursor-pointer  duration-300"
+        onClick={() => setShowModal(true)}
+      >
+        <h3 className="text-lg font-semibold text-[#F87171] mb-2">
+          Book a 1:1 Call
+        </h3>
+        <p className="text-sm leading-relaxed mb-4">
+          Want to discuss your project in detail? Click here to schedule a 1:1
+          call.
+        </p>
+        <button className="py-2 px-6 bg-[#F87171] text-white rounded-full hover:bg-[#f65c5c] transition-colors duration-300">
+          Schedule Now
+        </button>
+      </div>
+      {showModal && (
+        <div className="fixed inset-0 bg-black/50 flex justify-center items-center z-50 p-4">
+          <div className="bg-white dark:bg-[#1e1e1e] p-6 rounded-2xl w-full max-w-md relative shadow-lg">
+            {/* Close Button */}
+            <button
+              className="absolute top-4 right-4 text-gray-500 hover:text-gray-700 dark:hover:text-white text-lg"
+              onClick={() => setShowModal(false)}
+            >
+              ✕
+            </button>
+
+            {/* Modal Title */}
+            <h2 className="text-2xl font-Ovo text-center font-semibold mb-6">
+              Book a 1:1 Call
+            </h2>
+
+            {/* Form */}
+            <form
+              onSubmit={async (e) => {
+                e.preventDefault();
+                setCallResult({ message: "Submitting...", type: "" });
+
+                const formData = {
+                  name: e.target.name.value,
+                  email: e.target.email.value,
+                  phone: e.target.phone.value,
+                  type: e.target.type.value,
+                  datetimeDescription: e.target.datetimeDescription.value,
+                };
+
+                try {
+                  const res = await fetch(
+                    "http://localhost:5000/api/book-call",
+                    {
+                      method: "POST",
+                      headers: { "Content-Type": "application/json" },
+                      body: JSON.stringify(formData),
+                    }
+                  );
+                  const data = await res.json();
+
+                  if (res.ok) {
+                    setCallResult({ message: data.message, type: "success" });
+                    e.target.reset();
+                  } else {
+                    setCallResult({
+                      message: data.message || "Error!",
+                      type: "error",
+                    });
+                  }
+
+                  setTimeout(
+                    () => setCallResult({ message: "", type: "" }),
+                    5000
+                  );
+                } catch (err) {
+                  setCallResult({ message: "Server error", type: "error" });
+                }
+              }}
+              className="space-y-4"
+            >
+              {/* Name */}
+              <div>
+                <label
+                  htmlFor="name"
+                  className="block text-sm font-medium mb-1"
+                >
+                  Name
+                </label>
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  placeholder="Your Name"
+                  required
+                  className="w-full text-sm px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#F87171] dark:bg-[#2a2a2a] dark:border-white/30"
+                />
+              </div>
+
+              {/* Email */}
+              <div>
+                <label
+                  htmlFor="email"
+                  className="block text-sm font-medium mb-1"
+                >
+                  Email
+                </label>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  placeholder="Your Email"
+                  required
+                  className="w-full text-sm px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#F87171] dark:bg-[#2a2a2a] dark:border-white/30"
+                />
+              </div>
+
+              {/* Phone */}
+              <div>
+                <label
+                  htmlFor="phone"
+                  className="block text-sm font-medium mb-1"
+                >
+                  Phone Number
+                </label>
+                <input
+                  type="tel"
+                  id="phone"
+                  name="phone"
+                  placeholder="Phone Number"
+                  required
+                  className="w-full text-sm px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#F87171] dark:bg-[#2a2a2a] dark:border-white/30"
+                />
+              </div>
+
+              {/* Call Type */}
+              <div>
+                <span className="block text-sm font-medium mb-2">
+                  Preferred Call Type
+                </span>
+                <div className="flex gap-3 mt-1">
+                  {/* Phone Call */}
+                  <label className="flex-1 cursor-pointer">
+                    <input
+                      type="radio"
+                      name="type"
+                      value="phone"
+                      required
+                      className="peer hidden"
+                    />
+                    <div
+                      className="border rounded-lg p-1 text-center transition-all duration-300 
+                      peer-checked:bg-[#F87171] peer-checked:text-white peer-checked:border-[#F87171]
+                      hover:bg-[#fcdede] hover:border-[#F87171] dark:border-white/30 dark:hover:bg-white/10"
+                    >
+                      Phone Call
+                    </div>
+                  </label>
+
+                  {/* Zoom */}
+                  <label className="flex-1 cursor-pointer">
+                    <input
+                      type="radio"
+                      name="type"
+                      value="zoom"
+                      required
+                      className="peer hidden"
+                    />
+                    <div
+                      className="border rounded-lg p-1 text-center transition-all duration-300 
+                      peer-checked:bg-[#F87171] peer-checked:text-white peer-checked:border-[#F87171]
+                      hover:bg-[#fcdede] hover:border-[#F87171] dark:border-white/30 dark:hover:bg-white/10"
+                    >
+                      Zoom
+                    </div>
+                  </label>
+                </div>
+              </div>
+
+              {/* Date & Time / Description */}
+              <div>
+                <label
+                  htmlFor="datetimeDescription"
+                  className="block text-sm font-medium mb-1"
+                >
+                  Date, Time & Notes
+                </label>
+                <textarea
+                  id="datetimeDescription"
+                  name="datetimeDescription"
+                  rows={3}
+                  placeholder="Enter preferred date, time, and any notes..."
+                  required
+                  className="w-full text-sm px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#F87171] dark:bg-[#2a2a2a] dark:border-white/30"
+                ></textarea>
+              </div>
+
+              {/* Result Message */}
+              {callResult.message && (
+                <div
+                  className={`px-4 py-2 rounded-md text-center font-medium ${
+                    callResult.type === "success"
+                      ? "bg-green-100 text-green-800"
+                      : "bg-red-100 text-red-800"
+                  }`}
+                >
+                  {callResult.message}
+                </div>
+              )}
+
+              {/* Submit Button */}
+              <button
+                type="submit"
+                className="w-full py-3 px-6 bg-[#F87171] text-white rounded-full font-medium hover:bg-[#f65c5c] transition-colors duration-300"
+              >
+                Book Call
+              </button>
+            </form>
+          </div>
+        </div>
+      )}
+
       {/* Quick Response Promise */}
       <div
         className="mt-6 max-w-2xl mx-auto  border border-gray-300 dark:border-white/20
