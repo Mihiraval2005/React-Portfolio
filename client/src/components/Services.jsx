@@ -98,7 +98,7 @@ export default function Services() {
   ];
 
   return (
-    <div id="services" className="w-full px-[12%] py-16 scroll-mt-20">
+    <div id="services" className="w-full px-[6%] py-16 scroll-mt-20">
       <h4 className="text-center mb-2 text-lg font-Ovo text-[#F87171] font-medium">
         What I Offer
       </h4>

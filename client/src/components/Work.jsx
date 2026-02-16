@@ -82,7 +82,7 @@ export default function Work() {
   }, []);
 
   return (
-    <div id="work" className="w-full px-[12%] py-16">
+    <div id="work" className="w-full px-[6%] py-16">
       <h4 className="text-center mb-2 text-lg font-Ovo text-[#F87171] font-medium">
         Trusted by Businesses
       </h4>
@@ -144,7 +144,7 @@ export default function Work() {
                 <span
                   key={i}
                   className={`
-            px-3 py-1
+            px-3 
             rounded-full
             text-xs font-medium
             border

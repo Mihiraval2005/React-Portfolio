@@ -59,7 +59,7 @@ export default function About() {
   return (
     <div
       id="about"
-      className="w-full px-6 sm:px-[8%] lg:px-[12%] py-12 scroll-mt-20"
+      className="w-full px-6 sm:px-[8%] lg:px-[6%] py-12 scroll-mt-20"
     >
       <h4 className="text-center mb-2 text-lg font-Ovo text-[#F87171] font-medium">
         Introduction
