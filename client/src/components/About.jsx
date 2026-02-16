@@ -156,7 +156,7 @@ export default function About() {
                   </div>
 
                   {/* Skills */}
-                  <div className="flex flex-wrap gap-2">
+                  <div className="flex flex-wrap gap-1">
                     {item.skills.map((skill) => (
                       <span
                         key={skill}
