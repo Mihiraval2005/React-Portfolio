@@ -102,17 +102,21 @@ export default function Services() {
       <h4 className="text-center mb-2 text-lg font-Ovo text-[#F87171] font-medium">
         What I Offer
       </h4>
-      <h2 className="text-center text-5xl font-Ovo">My Services</h2>
+      <h2
+        className="text-center text-2xl sm:text-3xl md:text-4xl lg:text-5xl
+ font-Ovo"
+      >
+        My Services
+      </h2>
 
       <p className="text-center max-w-2xl mx-auto mt-5 mb-12 font-Ovo">
         I am a{" "}
         <span className="font-dancing text-[#F87171] text-xl sm:text-2xl font-semibold">
           Software Developer
         </span>{" "}
-          from Gujarat, India, building modern web,
-        cross-platform, and desktop applications using technologies like React,
-        .NET, and Node.js. I focus on creating scalable, high-performance, and
-        user-friendly solutions.
+        from Gujarat, India, building modern web, cross-platform, and desktop
+        applications using technologies like React, .NET, and Node.js. I focus
+        on creating scalable, high-performance, and user-friendly solutions.
       </p>
 
       {/* Service Cards */}
@@ -204,7 +208,7 @@ export default function Services() {
           onClick={() => setSelectedService(null)}
         >
           <div
-            className="bg-white dark:bg-[#1e1e1e] rounded-2xl p-6 
+            className="bg-white dark:bg-[#1e1e1e] rounded-2xl p-4 sm:p-6
             max-w-xl w-full relative shadow-xl"
             onClick={(e) => e.stopPropagation()}
           >

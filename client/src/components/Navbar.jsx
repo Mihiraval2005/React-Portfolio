@@ -82,7 +82,7 @@ export default function Navbar() {
 
       <nav
         ref={navRef}
-        className="w-full fixed top-0 left-0 px-5 lg:px-8 xl:px-[8%] py-4 flex items-center z-50"
+        className="w-full fixed top-0 left-0 px-4 sm:px-6 lg:px-12 py-4 flex items-center justify-between z-50"
       >
         {/* LEFT - Logo */}
         <div className="flex-1">

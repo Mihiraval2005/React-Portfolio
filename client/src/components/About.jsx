@@ -65,7 +65,8 @@ export default function About() {
         Introduction
       </h4>
 
-      <h2 className="text-center text-3xl sm:text-4xl lg:text-5xl font-Ovo">
+      <h2 className="text-center text-3xl  lg:text-2xl sm:text-3xl md:text-4xl 
+ font-Ovo">
         About me
       </h2>
 

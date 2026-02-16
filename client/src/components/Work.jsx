@@ -83,11 +83,14 @@ export default function Work() {
 
   return (
     <div id="work" className="w-full px-[12%] py-16">
-     <h4 className="text-center mb-2 text-lg font-Ovo text-[#F87171] font-medium">
+      <h4 className="text-center mb-2 text-lg font-Ovo text-[#F87171] font-medium">
         Trusted by Businesses
       </h4>
 
-      <h2 className="text-center text-5xl font-Ovo">
+      <h2
+        className="text-center text-2xl sm:text-3xl md:text-4xl lg:text-5xl
+ font-Ovo"
+      >
         Professional Contributions
       </h2>
 
@@ -206,7 +209,7 @@ export default function Work() {
             <img
               src={selectedProject.images[currentImage]}
               alt="Preview"
-              className="w-full h-[450px] object-contain rounded-lg"
+              className="w-full mt-5 max-h-[60vh] object-contain rounded-lg"
             />
 
             {/* Navigation */}

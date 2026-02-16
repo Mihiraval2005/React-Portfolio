@@ -11,8 +11,9 @@ const app = express();
 
 app.use(cors({
   origin: [
-    'https://mihir-5nlg.onrender.com',
-    'https://portfolio-api-y0l7.onrender.com'
+    // 'https://mihir-5nlg.onrender.com',
+    // 'https://portfolio-api-y0l7.onrender.com'
+    'http://localhost:5173',
   ],
 }));
 
