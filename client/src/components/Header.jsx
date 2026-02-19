@@ -1,6 +1,6 @@
 export default function Header() {
   return (
-    <div className="w-full max-w-4xl mx-auto px-4 sm:px-6 pt-28 min-h-screen flex flex-col items-center justify-center text-center gap-4">
+    <div className="w-full max-w-4xl mx-auto px-4 sm:px-6 pt-28 pb-14 flex flex-col items-center justify-center text-center gap-4">
       <img
         src="./assets/profile-img.png"
         alt="profile"
@@ -34,7 +34,7 @@ export default function Header() {
           <img src="./assets/right-arrow-white.png" alt="" className="w-4" />
         </a>
 
-        <a
+        {/* <a
           href="./assets/dev-icon.png"
           download
           className="px-6 sm:px-10 py-2 rounded-full border border-gray-300 dark:border-white/25 hover:bg-slate-100/70 dark:hover:bg-darkHover flex items-center gap-2 bg-white dark:bg-transparent dark:text-white text-sm sm:text-base"
@@ -45,7 +45,7 @@ export default function Header() {
             alt=""
             className="w-4 dark:invert"
           />
-        </a>
+        </a> */}
       </div>
     </div>
   );

@@ -17,8 +17,8 @@ export default function Contact() {
     };
 
     try {
-      // const res = await fetch("https://portfolio-api-y0l7.onrender.com/api/contact/", {
-      const res = await fetch("http://localhost:5000/api/contact/", {
+      const res = await fetch("https://portfolio-api-y0l7.onrender.com/api/contact/", {
+      // const res = await fetch("http://localhost:5000/api/contact/", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
@@ -113,7 +113,7 @@ export default function Contact() {
           <img src="./assets/right-arrow-white.png" alt="" className="w-4" />
         </button>
       </form>
-      <div
+      {/* <div
         className="mt-10 max-w-2xl mx-auto border border-gray-300 dark:border-white/20 p-6 rounded-xl text-center cursor-pointer  duration-300"
         onClick={() => setShowModal(true)}
       >
@@ -131,7 +131,7 @@ export default function Contact() {
       {showModal && (
         <div className="fixed inset-0 bg-black/50 flex justify-center items-center z-50 p-4">
           <div className="bg-white dark:bg-[#1e1e1e] p-6 rounded-2xl w-full max-w-md relative shadow-lg">
-            {/* Close Button */}
+           
             <button
               className="absolute top-4 right-4 text-gray-500 hover:text-gray-700 dark:hover:text-white text-lg"
               onClick={() => setShowModal(false)}
@@ -139,12 +139,12 @@ export default function Contact() {
               ✕
             </button>
 
-            {/* Modal Title */}
+           
             <h2 className="text-2xl font-Ovo text-center font-semibold mb-6">
               Book a 1:1 Call
             </h2>
 
-            {/* Form */}
+           
             <form
               onSubmit={async (e) => {
                 e.preventDefault();
@@ -160,7 +160,7 @@ export default function Contact() {
 
                 try {
                   const res = await fetch(
-                    // "https://portfolio-api-y0l7.onrender.com/api/book-call",
+                     
                     "http://localhost:5000/api/book-call",
                     {
                       method: "POST",
@@ -190,7 +190,7 @@ export default function Contact() {
               }}
               className="space-y-4"
             >
-              {/* Name */}
+              
               <div>
                 <label
                   htmlFor="name"
@@ -208,7 +208,7 @@ export default function Contact() {
                 />
               </div>
 
-              {/* Email */}
+               
               <div>
                 <label
                   htmlFor="email"
@@ -226,7 +226,7 @@ export default function Contact() {
                 />
               </div>
 
-              {/* Phone */}
+             
               <div>
                 <label
                   htmlFor="phone"
@@ -244,13 +244,13 @@ export default function Contact() {
                 />
               </div>
 
-              {/* Call Type */}
+               
               <div>
                 <span className="block text-sm font-medium mb-2">
                   Preferred Call Type
                 </span>
                 <div className="flex gap-3 mt-1">
-                  {/* Phone Call */}
+                 
                   <label className="flex-1 cursor-pointer">
                     <input
                       type="radio"
@@ -268,7 +268,7 @@ export default function Contact() {
                     </div>
                   </label>
 
-                  {/* Zoom */}
+                 
                   <label className="flex-1 cursor-pointer">
                     <input
                       type="radio"
@@ -288,7 +288,7 @@ export default function Contact() {
                 </div>
               </div>
 
-              {/* Date & Time / Description */}
+               
               <div>
                 <label
                   htmlFor="datetimeDescription"
@@ -306,7 +306,7 @@ export default function Contact() {
                 ></textarea>
               </div>
 
-              {/* Result Message */}
+              
               {callResult.message && (
                 <div
                   className={`px-4 py-2 rounded-md text-center font-medium ${
@@ -319,7 +319,7 @@ export default function Contact() {
                 </div>
               )}
 
-              {/* Submit Button */}
+               
               <button
                 type="submit"
                 className="w-full py-3 px-6 bg-[#F87171] text-white rounded-full font-medium hover:bg-[#f65c5c] transition-colors duration-300"
@@ -329,7 +329,7 @@ export default function Contact() {
             </form>
           </div>
         </div>
-      )}
+      )} */}
 
       {/* Quick Response Promise */}
       <div
