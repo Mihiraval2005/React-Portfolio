@@ -4,11 +4,17 @@ export default function Contact() {
   const [result, setResult] = useState({ message: "", type: "" }); // type: 'success' | 'error'
   const [showModal, setShowModal] = useState(false);
   const [callResult, setCallResult] = useState({ message: "", type: "" });
-
+  const [loading, setLoading] = useState(false);
   const onSubmit = async (event) => {
     event.preventDefault();
 
-    setResult({ message: "Sending....", type: "" });
+    if (loading) return; // 🚫 Prevent double click
+
+    setLoading(true);
+    setResult({
+      message: "Submitting your message, please wait...",
+      type: "loading",
+    });
 
     const formData = {
       name: event.target.name.value,
@@ -18,7 +24,6 @@ export default function Contact() {
 
     try {
       const res = await fetch("https://portfolio-api-y0l7.onrender.com/api/contact/", {
-      // const res = await fetch("http://localhost:5000/api/contact/", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
@@ -26,27 +31,23 @@ export default function Contact() {
 
       const data = await res.json();
 
-      if (res.ok) {
-        setResult({ message: data.message, type: "success" });
-        event.target.reset();
-      } else {
-        setResult({
-          message: data.message || "Something went wrong!",
-          type: "error",
-        });
+      if (!res.ok) {
+        throw new Error(data.message || "Something went wrong");
       }
 
-      // Optional: clear message after 5 seconds
-      setTimeout(() => setResult({ message: "", type: "" }), 3000);
+      setResult({ message: data.message, type: "success" });
+      event.target.reset();
     } catch (error) {
-      console.error(error);
       setResult({
-        message: "Server error. Please try again later.",
+        message:
+          error.message ||
+          "Unable to submit your message at the moment. Please try again shortly.",
         type: "error",
       });
+    } finally {
+      setLoading(false); // ✅ Always stop loading
     }
   };
-
   return (
     <div
       id="contact"
@@ -93,11 +94,13 @@ export default function Contact() {
           <div
             className={`
       mb-5 mx-auto max-w-md px-4 py-3 rounded-lg text-center 
-      font-medium   transition-all duration-500
+      font-medium transition-all duration-500 animate-fadeIn
       ${
         result.type === "success"
-          ? "bg-green-100 text-green-800 animate-fadeIn"
-          : "bg-red-100 text-red-800 animate-fadeIn"
+          ? "bg-green-100 text-green-800"
+          : result.type === "error"
+          ? "bg-red-100 text-red-800"
+          : "bg-blue-100 text-blue-800"
       }
     `}
           >
@@ -107,10 +110,29 @@ export default function Contact() {
 
         <button
           type="submit"
-          className="py-2 px-8 w-max flex items-center justify-between gap-2 bg-black/80 text-white rounded-full mx-auto hover:bg-black duration-500 dark:bg-transparent dark:border dark:border-white/30 dark:hover:bg-darkHover"
+          disabled={loading}
+          className={`py-2 px-8 w-max flex items-center justify-center gap-2 rounded-full mx-auto transition duration-300
+  ${
+    loading
+      ? "bg-gray-400 cursor-not-allowed text-white"
+      : "bg-black/80 hover:bg-black text-white dark:bg-transparent dark:border dark:border-white/30 dark:hover:bg-darkHover"
+  }`}
         >
-          Submit now
-          <img src="./assets/right-arrow-white.png" alt="" className="w-4" />
+          {loading ? (
+            <>
+              <span className="animate-spin h-4 w-4 border-2 border-white border-t-transparent rounded-full"></span>
+              Sending...
+            </>
+          ) : (
+            <>
+              Submit now
+              <img
+                src="./assets/right-arrow-white.png"
+                alt=""
+                className="w-4"
+              />
+            </>
+          )}
         </button>
       </form>
       {/* <div

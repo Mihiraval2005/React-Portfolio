@@ -25,20 +25,26 @@ export default function Footer() {
         <p>
           © {new Date().getFullYear()}{" "}
           <a href="https://themewagon.com" target="_blank">
-           • Mihir Raval
+            • Mihir Raval
           </a>{" "}
           • All rights reserved.
         </p>
         <ul className="flex items-center gap-10 justify-center mt-4 sm:mt-0">
-          <li>
+          {/* <li>
             <a href="#!">GitHub</a>
-          </li>
+          </li> */}
           <li>
-            <a href="#!">LinkedIn</a>
+            <a
+              href="https://www.linkedin.com/in/mihirravalc/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              LinkedIn
+            </a>
           </li>
-          <li>
+          {/* <li>
             <a href="#!">Twitter</a>
-          </li>
+          </li> */}
         </ul>
       </div>
     </div>
