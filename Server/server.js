@@ -11,9 +11,9 @@ const app = express();
 
 app.use(cors({
   origin: [
-    'https://mihir-5nlg.onrender.com',
+    // 'https://mihir-5nlg.onrender.com',
     // 'https://portfolio-api-y0l7.onrender.com'
-    // 'http://localhost:5173',
+    'http://localhost:5173',
   ],
    methods: ["GET", "POST"],
   credentials: true,
@@ -21,7 +21,7 @@ app.use(cors({
 
 app.use(express.json());
 
-app.use("/api/contact", contactRoutes);
+app.use("/api", contactRoutes);
 
 app.get("/", (req, res) => {
   res.send("API Running...");

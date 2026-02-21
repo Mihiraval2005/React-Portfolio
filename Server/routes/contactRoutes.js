@@ -4,6 +4,6 @@ import { createContact } from '../controllers/contactController.js';
 const router = express.Router();
 
  
-router.post('/', createContact);
+router.post('/contact', createContact);
 
 export default router;
