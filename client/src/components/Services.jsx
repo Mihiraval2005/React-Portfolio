@@ -244,7 +244,7 @@ export default function Services() {
               ))}
             </div>
 
-            <div className="bg-[#F87171]/10 dark:bg-[#F87171]/20 p-4 rounded-lg mb-5">
+            {/* <div className="bg-[#F87171]/10 dark:bg-[#F87171]/20 p-4 rounded-lg mb-5">
               <p className="text-sm font-medium text-gray-800 dark:text-white">
                 Let’s turn your vision into a high-impact digital product.
               </p>
@@ -252,7 +252,7 @@ export default function Services() {
 
             <button className="w-full py-2.5 rounded-full bg-[#F87171] text-white font-semibold transition">
               Start Your Project 🚀
-            </button>
+            </button> */}
 
             {/* <p className="text-xs text-center text-gray-500 mt-3">
               Limited project slots available this month.
